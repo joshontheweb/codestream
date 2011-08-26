@@ -25,6 +25,7 @@
 	<link rel="stylesheet" href="{{ STATIC_URL }}styles/skeleton.css">
 	<link rel="stylesheet" href="{{ STATIC_URL }}styles/layout.css">
 	
+    <script src="http://www-cdn.justin.tv/javascripts/jtv_api.js"></script>
 	<!-- Favicons
 	================================================== -->
 	<link rel="shortcut icon" href="{{ STATIC_URL }}styles/images/favicon.ico">
@@ -68,9 +69,31 @@
 			<p>The easiest way to really get started with Skeleton is to check out the full docs and info at <a href="http://www.getskeleton.com">www.getskeleton.com.</a>. Skeleton is also open-source and has a <a href="https://github.com/dhgamache/skeleton">project on git</a>, so check that out if you want to report bugs or create a pull request. If you have any questions, thoughts, concerns or feedback, please don't hesitate to email me at <a href="mailto:hi@getskeleton.com">hi@getskeleton.com</a>.</p>
 		</div>
 
-	</div><!-- container -->
+        <div id="player">
+            
+        </div>
 
-		
+
+        <object type="application/x-shockwave-flash" height="300" 
+                id="live_embed_player_flash" 
+                data="http://www.justin.tv/widgets/live_embed_player.swf?channel=ismailiatv">
+                <param name="allowFullScreen" value="true" />
+                <param name="allowScriptAccess" value="always" />
+                <param name="allowNetworking" value="all" />
+                <param name="movie" value="http://www.justin.tv/widgets/live_embed_player.swf" />
+                <param name="flashvars" value="hostname=www.justin.tv&channel=ismailiatv&auto_play=false&start_volume=25" />
+        </object>
+                
+        <div name="jtv_api.new_player" title="channel=officecam&start_volume=50"></div>        
+       
+        <object type="application/x-shockwave-flash" height="300" width="400" id="live_embed_player_flash" data="http://www.justin.tv/widgets/live_embed_player.swf?channel=elecuatorianoradio" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.justin.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.justin.tv&channel=elecuatorianoradio&auto_play=false&start_volume=25" /></object><a href="http://www.justin.tv/elecuatorianoradio#r=-rid-&amp;s=em" class="trk" style="padding:2px 0px 4px; display:block; width:345px; font-weight:normal; font-size:10px; text-decoration:underline; text-align:center;">Watch live video from El Ecuatoriano Tv on www.justin.tv</a>
+
+
+
+
+        <object type="application/x-shockwave-flash" height="295" width="353" id="jtv_flash" data="http://www.justin.tv/widgets/live_api_player.swf?start_volume=0.5&amp;backgroundImage=&amp;channel=milvus&amp;hostname=www.justin.tv&amp;auto_play=false&amp;consumer_key=7eNt7DrcNvlucmfpxY6RVEbaPXo8NiWwDlVC42tHxA" bgcolor="#000000">    <param name="allowFullScreen" value="true" />    <param name="allowScriptAccess" value="always" />    <param name="allowNetworking" value="all" />    <param name="movie" value="http://www.justin.tv/widgets/live_api_player.swf" />    <param name="flashvars" value="start_volume=0.5&amp;backgroundImage=&amp;channel=milvus&amp;hostname=www.justin.tv&amp;auto_play=false&amp;enable_javscript=true" /></object><br /><a href="http://www.justin.tv/milvus#r=-rid-&amp;s=em" style="padding:2px 0px 4px; display:block; width:353; font-weight:normal; font-size:10px; text-decoration:underline; text-align:center;">Watch live video from milvus on www.justin.tv</a>
+    </div><!-- container -->
+
 		
 		
 		
@@ -79,6 +102,24 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
 	<script>window.jQuery || document.write("<script src='{{ STATIC_URL }}scripts/jquery-1.5.1.min.js'>\x3C/script>")</script>
 	<script src="{{ STATIC_URL }}scripts/app.js"></script>
+
+    <script>
+        player = jtv_api.new_player(document.getElementById('player'), { 
+             custom:true, 
+             consumer_key:'7eNt7DrcNvlucmfpxY6RVEbaPXo8NiWwDlVC42tHxA', 
+             auto_play: true,
+             events : { 
+                 // stream_lost : play_random, 
+                 // video_not_found : play_random, 
+             } 
+        }); 
+
+    
+        // var jtvPlayer = jtv_api.new_player('player', {custom: true, channel: 'thegreatgq', consumer_key: '7eNt7DrcNvlucmfpxY6RVEbaPXo8NiWwDlVC42tHxA'})
+        // $('#player').append(jtvPlayer);
+        // debugger;
+        // jtvPlayer.play_live('thegreatgq');
+    </script>
 	
 <!-- End Document
 ================================================== -->
